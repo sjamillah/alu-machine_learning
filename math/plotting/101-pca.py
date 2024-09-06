@@ -17,7 +17,9 @@ fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
 # Scatter plot the PCA-reduced data, coloring by labels
-scatter = ax.scatter(pca_data[:, 0], pca_data[:, 1], pca_data[:, 2], c=labels, cmap='plasma')
+scatter = ax.scatter(
+    pca_data[:, 0], pca_data[:, 1], pca_data[:, 2], c=labels, cmap='plasma'
+    )
 
 # Add color bar based on species labels
 cbar = fig.colorbar(scatter, ax=ax, label='Species')
