@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Creates a function that performs element-wise add, subtract, multiply and division
+function that performs element-wise add, subtract, multiply & division
 """
 
 
