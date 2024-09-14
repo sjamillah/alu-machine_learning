@@ -2,7 +2,6 @@
 """
 Slice numpy arrays
 """
-import numpy as np
 
 
 def np_slice(matrix, axes=None):
@@ -17,23 +16,21 @@ def np_slice(matrix, axes=None):
     Returns:
         numpy.ndarray: the sliced matrix
     """
-    if axes is None:
-        return matrix[...]
-    slices = []
-    for i in range(matrix.ndim):
-        if i in axes:
-            slices.append(slice(*axes[i]))
+    def slice_along_axis(matrix, axis, slice_tuple):
+        if axis == 0:
+            # Slice along the first dimension (rows)
+            return [row[slice_tuple[0]:slice_tuple[1]] for row in matrix]
+        elif axis == 1:
+            # Slice along the second dimension (columns)
+            return [row[slice_tuple[0]:slice_tuple[1]] for row in matrix]
         else:
-            slices.append(slice(None))
-    return matrix[tuple(slices)]
+            # For higher dimensions, more complex handling is needed
+            raise NotImplementedError(
+                "Slicing along this axis is not implemented."
+                )
 
+    # Apply slicing according to the axes dictionary
+    for axis, slice_tuple in sorted(axes.items()):
+        matrix = slice_along_axis(matrix, axis, slice_tuple)
 
-# test the function
-mat1 = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
-print(np_slice(mat1, axes={1: (1, 3)}))
-print(mat1)
-# mat2 = np.array([[[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]],
-#                  [[11, 12, 13, 14, 15], [16, 17, 18, 19, 20]],
-#                  [[21, 22, 23, 24, 25], [26, 27, 28, 29, 30]]])
-# print(np_slice(mat2, axes={0: (2,), 2: (None, None, -2)}))
-# print(mat2)
+    return matrix
