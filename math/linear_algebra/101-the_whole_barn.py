@@ -6,7 +6,17 @@ Matrix addition
 
 
 def add_matrices(mat1, mat2):
-    # Check if the matrices have the same shape
+    """
+    Adds two matrices element-wise.
+
+    Args:
+        mat1 (list): The first matrix.
+        mat2 (list): The second matrix.
+
+    Returns:
+        list: The result of adding mat1 and mat2 element-wise.
+        None: If the matrices are not the same shape.
+    """
     if not isinstance(mat1, list) or not isinstance(mat2, list):
         return None
 
