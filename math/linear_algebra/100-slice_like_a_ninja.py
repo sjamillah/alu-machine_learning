@@ -30,7 +30,8 @@ def np_slice(matrix, axes=None):
                 )
 
     # Apply slicing according to the axes dictionary
-    for axis, slice_tuple in sorted(axes.items()):
+    for axis in sorted(axes.keys()):
+        slice_tuple = axes[axis]
         matrix = slice_along_axis(matrix, axis, slice_tuple)
 
     return matrix
