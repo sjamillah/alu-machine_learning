@@ -22,13 +22,13 @@ def add_matrices(mat1, mat2):
     if not check_shape(mat1, mat2):
         return None
 
-
     # Function to add matrices element-wise
     def add_elementwise(m1, m2):
+
         # Function to add matrices element-wise
         if isinstance(m1, list) and isinstance(m2, list):
             return [add_elementwise(sub1, sub2) for sub1, sub2 in zip(m1, m2)]
         else:
             return m1 + m2
-    
+
     return add_elementwise(mat1, mat2)
