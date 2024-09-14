@@ -26,7 +26,9 @@ def np_slice(matrix, axes=None):
         else:
             slices.append(slice(None))
     return matrix[tuple(slices)]
-  
+
+
+# test the function
 mat1 = np.array([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10]])
 print(np_slice(mat1, axes={1: (1, 3)}))
 print(mat1)

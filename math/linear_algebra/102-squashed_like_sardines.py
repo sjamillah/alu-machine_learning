@@ -19,3 +19,10 @@ def cat_matrices(mat1, mat2, axis=0):
         return [x + y for x, y in zip(mat1, mat2)]
     else:
         return None
+
+
+if __name__ == "__main__":
+    mat1 = [[1, 2], [3, 4]]
+    mat2 = [[5, 6], [7, 8]]
+    print(cat_matrices(mat1, mat2))
+    print(cat_matrices(mat1, mat2, axis=1))
