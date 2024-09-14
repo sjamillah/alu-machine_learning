@@ -7,6 +7,8 @@ Matrix addition
 
 def add_matrices(mat1, mat2):
     # Check if the matrices have the same shape
+    if not isinstance(mat1, list) or not isinstance(mat2, list):
+        return None
 
     def check_shape(m1, m2):
         if isinstance(m1, list) and isinstance(m2, list):
