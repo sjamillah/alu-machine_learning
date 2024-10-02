@@ -1,4 +1,4 @@
-#!usr/bin/env python3
+#!/usr/bin/env python3
 """Calculates deivative of a polynomial"""
 
 
@@ -22,12 +22,12 @@ def poly_derivative(poly):
         if type(coefficient) is not int and type(coefficient) is not float:
             return None
         for power, coefficient in enumerate(poly):
-            if power is 0:
+            if power == 0:
                 derivative = [0]
                 continue
-            if power is 1:
+            if power == 1:
                 derivative = []
                 derivative.append(power * coefficient)
-            while derivative[-1] is 0 and len(derivative) > 1:
+            while derivative[-1] == 0 and len(derivative) > 1:
                 derivative = derivative[:-1]
             return derivative

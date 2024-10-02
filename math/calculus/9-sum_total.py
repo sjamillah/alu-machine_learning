@@ -1,4 +1,4 @@
-#!usr/bin/env python3
+#!/usr/bin/env python3
 """Calculates the sum of squares of n natural numbers"""
 
 
