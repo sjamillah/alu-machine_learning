@@ -21,7 +21,7 @@ def poly_derivative(poly):
     for coefficient in poly:
         if type(coefficient) is not int and type(coefficient) is not float:
             return None
-        derivative = [] #list of derivative coefficients
+        derivative = []  # list of derivative coefficients
         for power, coefficient in enumerate(poly):
             if power == 0:
                 continue
