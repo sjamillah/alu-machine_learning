@@ -21,13 +21,13 @@ def poly_derivative(poly):
     for coefficient in poly:
         if type(coefficient) is not int and type(coefficient) is not float:
             return None
+        derivative = [] #list of derivative coefficients
         for power, coefficient in enumerate(poly):
             if power == 0:
-                derivative = [0]
                 continue
-            if power == 1:
-                derivative = []
-                derivative.append(power * coefficient)
-            while derivative[-1] == 0 and len(derivative) > 1:
-                derivative = derivative[:-1]
-            return derivative
+            derivative.append(power * coefficient)
+        while len(derivative) > 1 and derivative[-1] == 0:
+            derivative.pop()
+        if not derivative:
+            return [0]
+        return derivative
