@@ -3,10 +3,22 @@
 
 
 class Poisson:
+    """
+    class that represents Poisson distribution
+
+    class constructor:
+        def __init__(self, data=None, lambtha=1.)
+
+    instance attributes:
+        lambtha [float]: the expected number of occurances in a given time
+
+    instance methods:
+        def pmf(self, k): calculates PMF for given number of successes
+    """
     def __init__(self, data=None, lambtha=1.):
         """
         Initializes the poisson distribution
-        Args:
+        
         class constructor
 
         parameters:
