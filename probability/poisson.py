@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 """Creates a class that represents a poisson distribution"""
+import math
+
 
 class Poisson:
     def __init__(self, data=None, lambtha=1.):
@@ -33,3 +35,24 @@ class Poisson:
             # Calculate lambtha as the mean of the data
             self.data = data
             self.lambtha = float(sum(data) / len(data))
+
+    def pmf(self, k):
+        """
+        The instance method PMF to calculate given number of successes k
+
+        Args:
+        k [int]: the number of successes
+
+        Returns:
+        PMF: the probability of successes 'k'
+        """
+        if type(k) is not int:
+            k = int(k)
+        # PMF defined for non-negative integers
+        if k < 0:
+            return 0
+        # calculates PMF using the formula: (lambtha^k * e^-lambtha) / k!
+        lambtha = self.lambtha
+        PMF = (lambtha ** k) * math.exp(-lambtha) / math.factorial(k)
+
+        return PMF
