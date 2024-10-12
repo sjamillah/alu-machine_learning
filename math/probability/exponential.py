@@ -16,6 +16,7 @@ class Exponential:
 
     instance methods:
         def pdf(self, x): calculates the PDF for a given period of time
+        dfe cdf(self, x): calculates the CDF for a given period of time
     """
     def __init__(self, data=None, lambtha=1.):
         """
@@ -54,3 +55,21 @@ class Exponential:
         lambtha = self.lambtha
         pdf = lambtha * (e ** (-lambtha * x))
         return pdf
+
+    def cdf(self, x):
+        """
+        Calculates the cdf of the class exponential
+
+        parameters:
+            x[int]: time period
+
+        returns:
+            the CDF value for x
+        """
+        # the time is always positive
+        if x < 0:
+            return 0
+        e = 2.7182818285
+        lambtha = self.lambtha
+        cdf = 1 - (lambtha * (e ** (-lambtha * x)))
+        return cdf
