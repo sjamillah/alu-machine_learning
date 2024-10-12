@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Creates a class that represents a poisson distribution"""
-import math
 
 
 class Poisson:
@@ -53,6 +52,10 @@ class Poisson:
             return 0
         # calculates PMF using the formula: (lambtha^k * e^-lambtha) / k!
         lambtha = self.lambtha
-        PMF = (lambtha ** k) * math.exp(-lambtha) / math.factorial(k)
+        e = 2.7182818285
+        factorial = 1
+        for i in range(k):
+            factorial *= (i + 1)
+        PMF = (lambtha ** k) * (e ** -lambtha) / factorial
 
         return PMF
