@@ -18,7 +18,7 @@ class Poisson:
     def __init__(self, data=None, lambtha=1.):
         """
         Initializes the poisson distribution
-        
+
         class constructor
 
         parameters:
