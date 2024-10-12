@@ -89,6 +89,6 @@ class Poisson:
             if k < 0:
                 return 0
             # calculates CMF summing the PMF values from 0 to k
-            cdf = sum(self.pmf(i) for i in range(k + 1))
-
+            for i in range(k + 1):
+                cdf += self.pmf(i)
             return cdf
