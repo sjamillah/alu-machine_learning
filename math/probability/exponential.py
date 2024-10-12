@@ -5,6 +5,17 @@
 class Exponential:
     """
     Class that calculates the exponential distribution
+
+    Args:
+    data: list of the data to be used to estimate the distribution
+    lambtha[float]: expected number of occurrences in a given time frame
+    x[int]: given time period
+
+    class constructor:
+        def __init__(self, data=None, lambtha=1.)
+
+    instance methods:
+        def pdf(self, x): calculates the PDF for a given period of time
     """
     def __init__(self, data=None, lambtha=1.):
         """
@@ -25,3 +36,21 @@ class Exponential:
             if len(data) < 2:
                 raise ValueError("data must contain multiple values")
             self.lambtha = 1 / (sum(data) / len(data))
+
+    def pdf(self, x):
+        """
+        Calculates the pdf of the class
+
+        parameters:
+            x[int]: time period
+
+        returns:
+            the PDF value for x
+        """
+        # the time is always positive
+        if x < 0:
+            return 0
+        e = 2.7182818285
+        lambtha = self.lambtha
+        pdf = lambtha * (e ** (-lambtha * x))
+        return pdf
