@@ -85,10 +85,10 @@ class Poisson:
         """
         if type(k) is not int:
             k = int(k)
-            # cdf defined for non-negative integers
-            if k < 0:
-                return 0
-            # calculates CMF summing the PMF values from 0 to k
-            for i in range(k + 1):
-                cdf += self.pmf(i)
-            return cdf
+        # cdf defined for non-negative integers
+        if k < 0:
+            return 0
+        # calculates CMF summing the PMF values from 0 to k
+        for i in range(k + 1):
+            cdf += self.pmf(i)
+        return cdf
