@@ -12,6 +12,10 @@ class Normal:
     instance attributes:
         mean [float]: the mean of the distribution
         stddev [float]: the standard deviation of the distribution
+
+    instance methods:
+        def z_score(self, x): calculates the z-score of a given x-value
+        def x_value(self, z): calculates the x-value of a given z-score
     """
 
     def __init__(self, data=None, mean=0., stddev=1.):
@@ -51,3 +55,33 @@ class Normal:
                     summation += ((x - mean) ** 2)
                 stddev = (summation / len(data)) ** (1 / 2)
                 self.stddev = stddev
+
+    def z_score(self, x):
+        """
+        calculates the z-score of a given x-value
+
+        parameters:
+            x: x-value
+
+        return:
+            z-score of x
+        """
+        mean = self.mean
+        stddev = self.stddev
+        z = (x - mean) / stddev
+        return z
+
+    def x_value(self, z):
+        """
+        calculates the x-value of a given z-score
+
+        parameters:
+            z: z-score
+
+        return:
+            x-value of z
+        """
+        mean = self.mean
+        stddev = self.stddev
+        x = (z * stddev) + mean
+        return x
