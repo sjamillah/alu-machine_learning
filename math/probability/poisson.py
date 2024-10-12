@@ -50,13 +50,13 @@ class Poisson:
 
     def pmf(self, k):
         """
-        The instance method PMF to calculate given number of successes k
+        The instance method pmf to calculate given number of successes k
 
         Args:
         k [int]: the number of successes
 
         Returns:
-        PMF: the probability of successes 'k'
+        pmf: the probability of successes 'k'
         """
         if type(k) is not int:
             k = int(k)
@@ -69,9 +69,9 @@ class Poisson:
         factorial = 1
         for i in range(k):
             factorial *= (i + 1)
-        PMF = (lambtha ** k) * (e ** -lambtha) / factorial
+        pmf = (lambtha ** k) * (e ** -lambtha) / factorial
 
-        return PMF
+        return pmf
 
     def cdf(self, k):
         """
@@ -81,14 +81,14 @@ class Poisson:
         k [int]: the number of successes
 
         Returns:
-        PMF: the probability of successes 'k'
+        cdf: the probability of successes 'k'
         """
         if type(k) is not int:
             k = int(k)
-            # PMF defined for non-negative integers
+            # cdf defined for non-negative integers
             if k < 0:
                 return 0
             # calculates CMF summing the PMF values from 0 to k
-            CDF = sum(self.pmf(i) for i in range(k + 1))
+            cdf = sum(self.pmf(i) for i in range(k + 1))
 
-            return CDF
+            return cdf
