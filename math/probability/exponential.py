@@ -71,5 +71,5 @@ class Exponential:
             return 0
         e = 2.7182818285
         lambtha = self.lambtha
-        cdf = 1 - (lambtha * (e ** (-lambtha * x)))
+        cdf = 1 - (e ** (-lambtha * x))
         return cdf
