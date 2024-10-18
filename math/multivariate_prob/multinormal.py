@@ -23,7 +23,7 @@ class MultiNormal:
         d, n = data.shape
         if n < 2:
             raise ValueError("data must contain multiple data points")
-        
+
         self.mean = data.mean(axis=1).reshape(d, 1)
         centered_data = data - self.mean
         self.cov = (centered_data @ centered_data.T) / (n - 1)
