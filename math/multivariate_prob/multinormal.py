@@ -16,17 +16,17 @@ class Multinormal:
     """
 
     def __init__(self, data):
-        if type(data) is not np.ndarray or len(data.shape) != 2:
+        if type(data) != np.ndarray:
+            raise TypeError("data must be a 2D numpy.ndarray")
+        if len(data.shape) != 2:
             raise TypeError("data must be a 2D numpy.ndarray")
         d, n = data.shape
         if n < 2:
             raise ValueError("data must contain multiple data points")
-        self.data = data
-        self.mean = mean
-        mean = np.mean(data, axis=1).reshape(d, 1)
-        centered_data = data - mean
-        cov = (centered_data @ centered_data.T) / (n - 1)
-        self.cov = cov
+        
+        self.mean = data.mean(axis=1).reshape(d, 1)
+        centered_data = data - self.mean
+        self.cov = (centered_data @ centered_data.T) / (n - 1)
 
     def pdf(self, x):
         """
