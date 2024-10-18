@@ -22,8 +22,8 @@ class Multinormal:
         if n < 2:
             raise ValueError("data must contain multiple data points")
         self.data = data
-        mean = np.mean(data, axis=1, keepdims=True)
         self.mean = mean
+        mean = np.mean(data, axis=1).reshape(d, 1)
         centered_data = data - mean
         cov = (centered_data @ centered_data.T) / (n - 1)
         self.cov = cov
