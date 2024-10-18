@@ -21,7 +21,7 @@ def mean_cov(X):
     Returns:
     tuple: A Tuple containing:
     - mean(numpy.ndarray): The mean of the dataset, of 1D array of shape (1,d)
-    - cov(numpy.ndarray): The covariance matrix of the dataset, of 2D array of shape(d,d)
+    - cov(numpy.ndarray): covariance mat of dataset, of 2D array of shape(d,d)
     """
     # Check if X is a 2D numpy array
     if not isinstance(X, np.ndarray) or len(X.shape) != 2:
