@@ -38,7 +38,7 @@ def likelihood(x, n, P):
     if not isinstance(P, np.ndarray) or len(P.shape) != 1:
         raise TypeError("P must be a 1D numpy.ndarray")
     if np.any(P < 0) or np.any(P > 1):
-        raise ValueError("All values in P must be in the range[0, 1]")
+        raise ValueError("All values in P must be in the range [0, 1]")
     numerator = np.math.factorial(n)
     denominator = np.math.factorial(x) * np.math.factorial(n - x)
     coefficient = numerator / denominator
