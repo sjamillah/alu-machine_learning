@@ -25,7 +25,7 @@ class Multinormal:
         mean = np.mean(data, axis=1, keepdims=True)
         self.mean = mean
         centered_data = data - mean
-        cov = np.dot(centered_data.T, centered_data) / (n - 1)
+        cov = np.dot(centered_data @ centered_data.T) / (n - 1)
         self.cov = cov
 
     def pdf(self, x):
