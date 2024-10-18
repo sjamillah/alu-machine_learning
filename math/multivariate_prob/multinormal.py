@@ -5,7 +5,7 @@
 import numpy as np
 
 
-class Multinormal:
+class MultiNormal:
     """
     Represents a multivariate normal distribution and PDF calculation
 
