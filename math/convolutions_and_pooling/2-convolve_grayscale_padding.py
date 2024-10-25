@@ -5,7 +5,7 @@ images with custom padding"""
 import numpy as np
 
 
-def convolve_grayscale_valid(images, kernel, padding):
+def convolve_grayscale_padding(images, kernel, padding):
     """
     Performs valid convolution on grayscale images
     with custom padding
