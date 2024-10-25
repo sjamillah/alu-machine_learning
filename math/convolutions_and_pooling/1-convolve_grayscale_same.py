@@ -24,8 +24,15 @@ def convolve_grayscale_valid(images, kernel):
     """
     m, h, w = images.shape[0], images.shape[1], images.shape[2]
     kh, kw = kernel.shape[0], kernel.shape[1]
-    padding_width = int(kw / 2)
-    padding_height = int(kh / 2)
+    if kh % 2 == 1:
+        padding_height = (kh - 1) // 2
+    else:
+        padding_height = kh // 2
+    if kw % 2 == 1:
+        padding_width = (kw - 1) // 2
+    else:
+        padding_width = kw // 2
+
     convolved = np.zeros((m, h, w))  # initialize output array
     # pad the images with zeros
     npad = ((0, 0), (padding_height, padding_height),
