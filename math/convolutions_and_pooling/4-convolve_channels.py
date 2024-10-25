@@ -43,14 +43,15 @@ def convolve_channels(images, kernel, padding='same', stride=(1, 1)):
         ph = 0
         pw = 0
     else:
-        pw, ph = padding
+        pw = padding[1]
+        ph = padding[0]
+    ch = int(((h - kh + (2 * ph)) - kh) / sh) + 1
+    cw = int(((w - kw + (2 * pw)) - kw) / sw) + 1
+    convolved = np.zeros((m, ch, cw))
     # pad the images with zeros
-    npad = ((0, 0), (ph, ph), (pw, pw))
+    npad = ((0, 0), (ph, ph), (pw, pw), (0, 0))
     imagesp = np.pad(images, pad_width=npad,
                      mode='constant', constant_values=0)
-    ch = ((h + (2 * ph) - kh) // sh) + 1
-    cw = ((w + (2 * pw) - kw) // sw) + 1
-    convolved = np.zeros((m, ch, cw))
     # the convolution operation
     for i in range(ch):
         x = i * sh
