@@ -42,7 +42,7 @@ def convolve_grayscale_valid(images, kernel):
     # the convolution operation
     for i in range(h):
         for j in range(w):
-            image_patch = imagesp[:, i:i + kh, j:j + kw]
+            image = imagesp[:, i: i + kh, j: j + kw]
             convolved[:, i, j] = np.sum(
-                np.multiply(image_patch, kernel), axis=(1, 2))
+                np.multiply(image, kernel), axis=(1, 2))
     return convolved
