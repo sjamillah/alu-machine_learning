@@ -33,6 +33,6 @@ class Neuron:
         self.nx = nx
 
         # Initialize weight vector with random normal distribution
-        self.__W = np.random.normal(size=(1, nx))
-        self.__b = 0  # The bias for the neuron
-        self.__A = 0  # The activated output of the neuron(prediction)
+        self.W = np.random.normal(size=(1, nx))
+        self.b = 0  # The bias for the neuron
+        self.A = 0  # The activated output of the neuron(prediction)
