@@ -12,6 +12,9 @@ class Neuron:
     Defines a single neuron performing binary classification.
     Attributes:
         nx(int): The number of input features to the neuron.
+        __W(numpy.ndarray): The weight vector for the neuron
+        __b(float): The bias for the neuron
+        __A(float): The activated output of the neuron
 
     Raises:
         TypeError: If nx is not an integer.
@@ -33,6 +36,27 @@ class Neuron:
         self.nx = nx
 
         # Initialize weight vector with random normal distribution
-        self.W = np.random.normal(size=(1, nx))
-        self.b = 0  # The bias for the neuron
-        self.A = 0  # The activated output of the neuron(prediction)
+        self.__W = np.random.normal(size=(1, nx))
+        self.__b = 0  # Private bias for the neuron
+        self.__A = 0  # Private activated output of the neuron(prediction)
+
+        @property
+        def W(self):
+            """
+            Getter for the weight vector
+            """
+            return self.__W
+        
+        @property
+        def b(self):
+            """
+            Getter for the bias
+            """
+            return self.__b
+        
+        @property
+        def A(self):
+            """
+            Getter for the activated output
+            """
+            return self.__A
