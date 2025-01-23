@@ -40,24 +40,24 @@ class Neuron:
         self.__b = 0  # Private bias of the neuron
         self.__A = 0  # Private activated output of the neuron(prediction)
 
-        # Getter functions
-        @property
-        def W(self):
-            """
-            Getter of the weight vector
-            """
-            return self.__W
+    # Getter functions
+    @property
+    def W(self):
+        """
+        Getter of the weight vector
+        """
+        return self.__W
 
-        @property
-        def b(self):
-            """
-            Getter of the bias
-            """
-            return self.__b
+    @property
+    def b(self):
+        """
+        Getter of the bias
+        """
+        return self.__b
 
-        @property
-        def A(self):
-            """
-            Getter of the activated output
-            """
-            return self.__A
+    @property
+    def A(self):
+        """
+        Getter of the activated output
+        """
+        return self.__A
