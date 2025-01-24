@@ -20,8 +20,20 @@ class NeuralNetwork:
     """
     def __init__(self, nx, nodes):
         """
-        Instantiates the W1, W2, b1, b2, A1, and A2
+        class constructor
         """
+        if type(nx) is not int:
+            raise TypeError('nx must be an integer')
+
+        if nx < 1:
+            raise ValueError('nx must be a positive integer')
+
+        if type(nodes) is not int:
+            raise TypeError('nodes must be an integer')
+
+        if nodes < 1:
+            raise ValueError('nodes must be a positive integer')
+
         self.nx = nx
         self.nodes = nodes
         self.W1 = np.random.randn(nodes, nx)
