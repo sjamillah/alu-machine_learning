@@ -8,7 +8,7 @@ import tensorflow as tf
 
 
 def evaluate(X, Y, save_path):
-    """ 
+    """
     Evaluates the output of the network
 
     Args:

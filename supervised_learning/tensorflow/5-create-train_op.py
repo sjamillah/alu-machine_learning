@@ -10,7 +10,7 @@ import tensorflow as tf
 def create_train_op(loss, alpha):
     """
     Creates the training operation
-    
+
     Args:
     loss: loss of the network's prediction
     alpha: learning rate
