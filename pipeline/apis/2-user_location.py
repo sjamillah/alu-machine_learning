@@ -7,6 +7,7 @@
 import requests
 import time
 from datetime import datetime
+import sys
 
 
 def main(url):
@@ -36,8 +37,6 @@ def main(url):
 
 
 if __name__ == "__main__":
-    import sys
-
     if len(sys.argv) < 2:
         print("Usage: python3 2-user_location.py <URL>")
         sys.exit(1)
