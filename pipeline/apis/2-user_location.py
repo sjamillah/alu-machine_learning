@@ -27,11 +27,11 @@ def main(url):
     if response.status_code == 404:
         print("Not found")
     elif response.status_code == 403:
-        reset_timestamp = int(response.headers["X-Ratelimit-Reset"])
+        reset_timestamp = int(response.headers.get("X-Ratelimit-Reset"))
         current_timestamp = int(time.time())
         reset_in_minutes = (reset_timestamp - current_timestamp) // 60
         print("Reset in {} min".format(reset_in_minutes))
-    else:
+    elif response.status_code == 200:
         print(response.json()["location"])
 
 
