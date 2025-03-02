@@ -6,7 +6,6 @@
 
 import requests
 import time
-from datetime import datetime
 import sys
 
 
@@ -28,12 +27,18 @@ def main(url):
     if response.status_code == 404:
         print("Not found")
     elif response.status_code == 403:
-        reset_timestamp = int(response.headers["X-Ratelimit-Reset"])
+        reset_timestamp = int(response.headers.get("X-Ratelimit-Reset", 0))
         current_timestamp = int(time.time())
         reset_in_minutes = (reset_timestamp - current_timestamp) // 60
         print("Reset in {} min".format(reset_in_minutes))
     else:
-        print(response.json()["location"])
+        data = response.json()
+        location = data.get("location")  # Get location value
+
+        if location:  # If location exists and is not None
+            print(location)
+        else:
+            print("Location not available")  # Clearer message
 
 
 if __name__ == "__main__":
