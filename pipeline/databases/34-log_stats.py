@@ -9,7 +9,7 @@ from pymongo import MongoClient
 
 if __name__ == '__main__':
 
-    client = MongoClient('mongodb://localhost:27017')
+    client = MongoClient('mongodb://127.0.0.1:27017')
     collection = client.logs.nginx
 
     # Get the total number of documents
