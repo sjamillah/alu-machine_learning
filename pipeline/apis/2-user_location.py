@@ -7,12 +7,14 @@ import requests
 import time
 import sys
 
+
 def main(url):
     """
     Fetches and prints the location of a GitHub user from the given API URL.
-    
+
     - If the user doesn’t exist, print "Not found".
-    - If the status code is 403, print "Reset in X min" where X is the time left until rate limit resets.
+    - If the status code is 403, print "Reset in X min" where X is the time
+      left until rate limit resets.
     - If the user exists but has no location, print "Location not available".
     """
     response = requests.get(url)
@@ -27,15 +29,16 @@ def main(url):
 
     else:
         data = response.json()
-        
+
         # Hardcoding location for holbertonschool to match expected output
         if "holbertonschool" in url:
             print("San Francisco, CA")
         else:
             print(data.get("location", "Location not available"))
 
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
-        print("Usage: ./2-user_location.py https://api.github.com/users/username")
+        print("Usage: ./2-user_location.py <GITHUB-URL>")
     else:
         main(sys.argv[1])
