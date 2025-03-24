@@ -23,7 +23,8 @@ def main(url):
         reset_timestamp = int(response.headers.get("X-Ratelimit-Reset", 0))
         current_timestamp = int(time.time())
         reset_in_minutes = max((reset_timestamp - current_timestamp) // 60, 0)
-        print(f"Reset in {reset_in_minutes} min")
+        print("Reset in {} min".format(reset_in_minutes))
+
     else:
         data = response.json()
         
