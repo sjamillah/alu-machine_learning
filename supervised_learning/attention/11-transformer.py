@@ -13,11 +13,50 @@ Decoder = __import__('10-transformer_decoder').Decoder
 class Transformer(tf.keras.layers.Layer):
     """
     Class to create the transformer network
+
+    class constructor:
+        def __init__(self, N, dm, h, hidden, input_vocab, target_vocab,
+                     max_seq_input, max_seq_target, drop_rate=0.1)
+
+    public instance attributes:
+        encoder: the encoder layer
+        decoder: the decoder layer
+        linear: the Dense layer with target_vocab units
+
+    public instance method:
+        def call(self, inputs, target, training, encoder_mask,
+                    look_ahead_mask, decoder_mask):
+            calls the transformer network and returns the transformer output
     """
     def __init__(self, N, dm, h, hidden, input_vocab, target_vocab,
                  max_seq_input, max_seq_target, drop_rate=0.1):
         """
         Class constructor
+
+        parameters:
+            N [int]:
+                represents the number of blocks in the encoder and decoder
+            dm [int]:
+                represents the dimensionality of the model
+            h [int]:
+                represents the number of heads
+            hidden [int]:
+                represents the number of hidden units in fully connected layer
+            input_vocab [int]:
+                represents the size of the input vocabulary
+            target_vocab [int]:
+                represents the size of the target vocabulary
+            max_seq_input [int]:
+                represents the maximum sequence length possible for input
+            max_seq_target [int]:
+                represents the maximum sequence length possible for target
+            drop_rate [float]:
+                the dropout rate
+
+        sets the public instance attributes:
+            encoder: the encoder layer
+            decoder: the decoder layer
+            linear: the Dense layer with target_vocab units
         """
         if type(N) is not int:
             raise TypeError(
@@ -57,6 +96,24 @@ class Transformer(tf.keras.layers.Layer):
              decoder_mask):
         """
         Calls the transformer network and returns the transformer output
+
+        parameters:
+            inputs [tensor of shape (batch, input_seq_len)]:
+                contains the inputs
+            target [tensor of shape (batch, target_seq_len)]:
+                contains the target
+            training [boolean]:
+                determines if the model is in training
+            encoder_mask:
+                padding mask to be applied to the encoder
+            look_ahead_mask:
+                look ahead mask to be applied to the decoder
+            decoder_mask:
+                padding mask to be applied to the decoder
+
+        returns:
+            [tensor of shape (batch, target_seq_len, target_vocab)]:
+                contains the transformer output
         """
         encoder_output = self.encoder(inputs, training, encoder_mask)
         decoder_output = self.decoder(target, encoder_output, training,
